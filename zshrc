@@ -133,7 +133,7 @@ frg() {
 }
 
 fz() {
-    cd $(z | pyp 'x.split()[1]' | fzf --tac --query $@ || pwd)
+    cd $(z | pyp 'x.split()[1]' | fzf --tac $([[ -z "$1" ]] && echo "" || echo "--query $@") || pwd)
 }
 
 # ripgrep aliases
