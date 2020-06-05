@@ -127,9 +127,9 @@ alias brewdeplist='brew leaves | xargs brew deps --installed --for-each'
 
 export BAT_THEME=GitHub
 
-# needs curl -fLo ~/Downloads/preview.sh https://raw.githubusercontent.com/junegunn/fzf.vim/master/bin/preview.sh
+# needs curl -fLo ~/.local/bin/preview.sh https://raw.githubusercontent.com/junegunn/fzf.vim/master/bin/preview.sh
 frg() {
-    rg --color ansi --vimgrep $@ | fzf --ansi --preview '~/Downloads/preview.sh {}'
+    rg --color ansi --vimgrep $@ | fzf --ansi --preview '~/.local/bin/preview.sh {}'
 }
 
 fz() {
