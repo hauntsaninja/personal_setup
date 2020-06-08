@@ -67,12 +67,14 @@ ZSH_HIGHLIGHT_STYLES[precommand]='none'
 ZSH_HIGHLIGHT_STYLES[redirection]='bold'
 
 # fzf config
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
+
 _fzf_compgen_path() {
-  fd --hidden --follow . "$1"
+  fd --hidden --follow --exclude ".git" . "$1"
 }
 
 _fzf_compgen_dir() {
-  fd --hidden --follow --type d . "$1"
+  fd --type d --hidden --follow --exclude ".git" . "$1"
 }
 
 # ==========
