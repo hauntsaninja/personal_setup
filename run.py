@@ -1,7 +1,9 @@
+#!/usr/bin/env python3
 import functools
 import subprocess
 import textwrap
 from pathlib import Path
+import sys
 
 
 def blue_print(arg):
@@ -228,4 +230,5 @@ def python_tools():
 
 if __name__ == "__main__":
     for fn in fns:
-        fn()
+        if "".join(sys.argv[1:]) in fn.__name__.lower().replace("_", ""):
+            fn()
