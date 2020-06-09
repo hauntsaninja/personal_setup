@@ -133,13 +133,13 @@ def brew():
 @sh()
 def main_brew_stuff():
     return """
-    brew install python3
-    brew install ripgrep
-    brew install fzf
-    brew install pipx
-    brew install pyenv
-    brew install htop
-    brew install tree
+    brew reinstall python3
+    brew reinstall ripgrep
+    brew reinstall fzf
+    brew reinstall pipx
+    brew reinstall pyenv
+    brew reinstall htop
+    brew reinstall tree
     """
 
 
@@ -148,12 +148,12 @@ def main_brew_stuff():
 @sh()
 def provisional_brew_stuff():
     return """
-    brew install fd
-    brew install bat
-    brew install tokei
-    brew install hyperfine
-    brew install dust
-    brew install gh
+    brew reinstall fd
+    brew reinstall bat
+    brew reinstall tokei
+    brew reinstall hyperfine
+    brew reinstall dust
+    brew reinstall gh
     """
 
 
@@ -172,10 +172,11 @@ def brew_casks():
 
 
 @collect
-@skip_if_fail("brew cask doctor | grep hammerspoon")
+@skip_if_fail("brew cask list | grep hammerspoon")
 @sh()
 def hammerspoon_config():
     return """
+    [[ ! -f ~/.hammerspoon/init.lua ]] || diff hammerspoon.lua ~/.hammerspoon/init.lua
     rm -rf ~/.hammerspoon
     mkdir ~/.hammerspoon
     cp hammerspoon.lua ~/.hammerspoon/init.lua
