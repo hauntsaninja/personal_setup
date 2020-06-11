@@ -141,7 +141,7 @@ function _git_current_branch() {
 # full screen fuzzy history search
 _fhist () {
     [ -n "$BUFFER" ] && BUFFER="${BUFFER%% ##} "
-    LINE="$(history | fzf -q "$BUFFER" --tac --tiebreak=index | tr -s ' ' | cut -c7-)"
+    LINE="$(history 0 | fzf -q "$BUFFER" --tac --tiebreak=index | tr -s ' ' | cut -c7-)"
 
     zle redisplay
     zle kill-buffer
