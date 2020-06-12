@@ -104,6 +104,7 @@ def zsh():
     cp zshenv ~/.zshenv
     [[ ! -f ~/.zshrc ]] || diff zshrc ~/.zshrc
     cp zshrc ~/.zshrc
+    zsh -c 'compaudit | xargs chmod g-w'
     rm -rf ~/.zgen
     git clone https://github.com/tarjoilija/zgen.git ~/.zgen
     zsh -i -c ''
