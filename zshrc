@@ -2,7 +2,7 @@
 
 typeset -F 3 SECONDS=0
 
-autoload -U compaudit compinit
+autoload -U compinit
 compinit -i -C
 
 # load zgen
@@ -23,6 +23,7 @@ if ! zgen saved; then
     zgen load https://gist.github.com/528dc0693e8dfacdfdc0cef6bd7f844b.git
     zgen load hauntsaninja/my_git_aliases
 
+    zgen load docker/cli contrib/completion/zsh
     zgen load junegunn/fzf shell
     # zgen load Aloxaf/fzf-tab
     zgen load lincheney/fzf-tab-completion zsh
@@ -32,6 +33,9 @@ if ! zgen saved; then
     zgen load shannonmoeller/up
     # nice, but can't group notifs, bug in removing failure notifs, bad default titles
     # zgen load marzocchi/zsh-notify
+
+    # my fork fixes an issue when you start a shell in a project with a venv
+    zgen load hauntsaninja/zsh-autoswitch-virtualenv
 
     # zgen oh-my-zsh plugins/dircycle
 
@@ -119,7 +123,7 @@ fz() {
 # ==========
 HISTFILE="$HOME/.zsh_history"
 HISTSIZE=50000
-SAVEHIST=10000
+SAVEHIST=25000
 
 setopt extended_history        # record timestamp of command in HISTFILE
 setopt hist_expire_dups_first  # delete duplicates first when HISTFILE size exceeds HISTSIZE
@@ -175,7 +179,7 @@ PROMPT="$([ -z $SSH_CLIENT ] || echo '%F{blue}%n@%m:%f')$([ -z $STY ] || echo '%
 # needs curl -fLo ~/.local/bin/preview.sh https://raw.githubusercontent.com/junegunn/fzf.vim/master/bin/preview.sh
 export BAT_THEME=GitHub
 frg() {
-    rg --color ansi --vimgrep $@ | fzf --ansi --preview '~/.local/bin/preview.sh {}'
+    vim $(rg --color ansi --vimgrep $@ | fzf --ansi --preview '~/.local/bin/preview.sh {}' | pyp 'z = x.split(":"); print(f"+{z[1]} {z[0]}")')
 }
 
 # ripgrep aliases
@@ -191,6 +195,7 @@ export PAGER=less
 export LESS=-R              # deals with colours better
 
 setopt correct_all          # adds corrections
+CORRECT_IGNORE_FILE='.*|test*.py'
 setopt interactivecomments  # recognise comments
 setopt multios              # something to do with redirection?
 
@@ -204,5 +209,11 @@ function google() {
 }
 
 alias brewdeplist='brew leaves | xargs brew deps --installed --for-each'
+
+export PATH="$HOME/.pyenv/bin:$PATH"
+
+# check_venv comes from zsh-autoswitch-virtualenv
+# Needs to be after all changes to path and prompt and so on
+check_venv
 
 echo "$SECONDS seconds"
