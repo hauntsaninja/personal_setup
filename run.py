@@ -213,19 +213,26 @@ def python_libraries():
 @sh()
 def python_tools():
     return """
+    pipx install pypyp
+
+    pipx install git-revise
+    pipx install git-delete-merged-branches
+
     pipx install black
+    pipx install darker
+    pipx install isort
+
     pipx install flake8
     pipx inject flake8 flake8-pyi flake8-bugbear
-    pipx install git-revise
-    pipx install isort
+    pipx install pylint
     pipx install mypy
+
     pipx install poetry
     pipx install pyinstrument
-    pipx install pylint
-    pipx install pypyp
     pipx install pytest
     pipx inject pytest pytest-cov pytest-xdist
     pipx install tox
+    pipx install virtualenv
     """
 
 
