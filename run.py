@@ -171,7 +171,16 @@ def brew_casks():
     brew cask install google-chrome
     brew cask install hammerspoon
     brew cask install spotify
+    brew cask install visual-studio-code
     """
+    # TODO: vscode extensions
+    # atom one dark theme
+    # atom one light theme
+    # error lens
+    # git lens
+    # pylance
+    # rewrap
+    # selected lines count
 
 
 @collect
