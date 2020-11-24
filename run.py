@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import argparse
 import functools
 import subprocess
 import textwrap
@@ -18,7 +19,7 @@ def run(cmd, verbose=True):
     if verbose:
         blue_print(cmd)
     proc = subprocess.Popen(
-        cmd, bufsize=1, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
+        ["/bin/bash", "-c", cmd], bufsize=1, stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
         cwd=Path(__file__).parent, universal_newlines=True
     )
     while True:
@@ -74,9 +75,10 @@ def sh(check=True):
             blue_print("Installing " + pretty_name(fn) + "...")
             blue_print("=" * 25)
             print()
-            print("Enter to continue (or type something to skip)... ", end="")
-            if input():
-                return
+            if not ARGS.yes:
+                print("Enter to continue (or type something to skip)... ", end="")
+                if input():
+                    return
             lines = fn(*args, **kwargs).splitlines()
             for l in lines:
                 cmd = l.strip()
@@ -104,7 +106,7 @@ def zsh():
     cp zshenv ~/.zshenv
     [[ ! -f ~/.zshrc ]] || diff zshrc ~/.zshrc
     cp zshrc ~/.zshrc
-    zsh -c 'compaudit | xargs chmod g-w'
+    # zsh -c 'compaudit | xargs chmod g-w'
     rm -rf ~/.zgen
     git clone https://github.com/tarjoilija/zgen.git ~/.zgen
     zsh -i -c ''
@@ -249,6 +251,11 @@ def python_tools():
 
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--yes", action="store_true", help="Don't ask, just do!")
+    parser.add_argument("sections", nargs="*", help="Things to run")
+    ARGS = parser.parse_args(sys.argv[1:])
+
     for fn in fns:
-        if "".join(sys.argv[1:]) in fn.__name__.lower().replace("_", ""):
+        if not ARGS.sections or any(x == fn.__name__.lower() for x in ARGS.sections):
             fn()

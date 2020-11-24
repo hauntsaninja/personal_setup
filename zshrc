@@ -8,7 +8,16 @@ compinit -i -C
 # load zgen
 source "${HOME}/.zgen/zgen.zsh"
 
-if zgen saved && [[ $(( $(date +%s) - $(stat -f "%m" ~/.zgen/init.zsh) )) -gt 1000000 ]]; then
+
+function file_mtime() {
+  local cmd
+  case "$OSTYPE" in
+    darwin*)  stat -f '%m' $1 ;;
+    linux*)   date +%s -r $1;;
+  esac
+}
+
+if zgen saved && [[ $(( $(date +%s) - $(file_mtime ~/.zgen/init.zsh) )) -gt 1000000 ]]; then
     touch ~/.zgen/init.zsh
     { brew update; brew upgrade; brew cleanup; } &
     pipx upgrade-all &
