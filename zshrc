@@ -90,6 +90,8 @@ _fzf_compgen_dir() {
   find $1 -type d -not -path '*/\.git/*'
 }
 
+alias fvim='vim $(fzf)'
+
 # ==========
 # Directory
 # ==========
