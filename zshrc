@@ -212,6 +212,10 @@ alias brewdeplist='brew leaves | xargs brew deps --installed --for-each'
 
 export PATH="$HOME/.pyenv/bin:$PATH"
 
+if [ -f "$HOME/.zshrc_local" ]; then
+  source "$HOME/.zshrc_local"
+fi
+
 # check_venv comes from zsh-autoswitch-virtualenv
 # Needs to be after all changes to path and prompt and so on
 check_venv
