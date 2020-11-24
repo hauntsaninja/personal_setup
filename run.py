@@ -157,6 +157,9 @@ def provisional_brew_stuff():
     brew reinstall hyperfine
     brew reinstall dust
     brew reinstall gh
+    brew reinstall fastmod
+    brew reinstall watch
+    brew reinstall node
     """
 
 
