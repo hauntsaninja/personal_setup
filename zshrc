@@ -13,7 +13,7 @@ function file_mtime() {
   local cmd
   case "$OSTYPE" in
     darwin*)  stat -f '%m' $1 ;;
-    linux*)   date +%s -r $1;;
+    linux*)   date +%s -r $1 ;;
   esac
 }
 
@@ -100,7 +100,10 @@ alias ....="cd ../../.."
 alias .....="cd ../../../.."
 
 export LSCOLORS="Gxfxcxdxbxegedabagacad"
-alias ls='ls -G'  # might not work on other platforms
+case "$OSTYPE" in
+  darwin*)  alias ls='ls -G' ;;
+  linux*)   alias ls='ls --color=tty' ;;
+esac
 alias ll='ls -lah'
 alias lt='ls -latrh'
 
