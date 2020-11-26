@@ -102,8 +102,6 @@ def sh(check=True):
 @sh()
 def zsh():
     return """
-    [[ ! -f ~/.zshenv ]] || diff zshenv ~/.zshenv
-    cp zshenv ~/.zshenv
     [[ ! -f ~/.zshrc ]] || diff zshrc ~/.zshrc
     cp zshrc ~/.zshrc
     # zsh -c 'compaudit | xargs chmod g-w'

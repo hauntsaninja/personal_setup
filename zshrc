@@ -224,6 +224,7 @@ function google() {
 
 alias brewdeplist='brew leaves | xargs brew deps --installed --for-each'
 
+export PATH="${HOME}/.local/bin:${PATH}"
 export PATH="$HOME/.pyenv/bin:$PATH"
 
 if [ -f "$HOME/.zshrc_local" ]; then
