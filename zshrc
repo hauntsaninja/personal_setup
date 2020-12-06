@@ -34,8 +34,8 @@ if ! zgen saved; then
 
     zgen load docker/cli contrib/completion/zsh
     zgen load junegunn/fzf shell
-    # zgen load Aloxaf/fzf-tab
-    zgen load lincheney/fzf-tab-completion zsh
+    zgen load Aloxaf/fzf-tab
+    # zgen load lincheney/fzf-tab-completion zsh
 
     zgen load rupa/z
     zgen load djui/alias-tips
