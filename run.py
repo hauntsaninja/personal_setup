@@ -78,6 +78,7 @@ def sh(check=True):
             if not ARGS.yes:
                 print("Enter to continue (or type something to skip)... ", end="")
                 if input():
+                    print()
                     return
             lines = fn(*args, **kwargs).splitlines()
             for l in lines:
@@ -154,12 +155,13 @@ def brew():
 def main_brew_stuff():
     return """
     brew reinstall python3
-    brew reinstall ripgrep
-    brew reinstall fzf
-    brew reinstall pipx
-    brew reinstall pyenv
-    brew reinstall htop
-    brew reinstall tree
+    brew reinstall node
+    brew reinstall ripgrep  # code search
+    brew reinstall fzf      # fuzzy finder
+    brew reinstall pipx     # manage python apps in their own venvs
+    brew reinstall pyenv    # manage python versions
+    brew reinstall htop     # view processes
+    brew reinstall tree     # show a directory tree
     """
 
 
@@ -168,15 +170,16 @@ def main_brew_stuff():
 @sh()
 def provisional_brew_stuff():
     return """
-    brew reinstall fd
-    brew reinstall bat
-    brew reinstall tokei
-    brew reinstall hyperfine
-    brew reinstall dust
-    brew reinstall gh
-    brew reinstall fastmod
-    brew reinstall watch
-    brew reinstall node
+    brew reinstall fd         # like find but sometimes more convenient
+    brew reinstall bat        # like cat with syntax highlighting
+    brew reinstall tokei      # count lines in code
+    brew reinstall hyperfine  # benchmarking
+    brew reinstall dust       # like du + tree
+    brew reinstall gh         # github cli
+    brew reinstall fastmod    # fast codemod (i hate sed)
+    brew reinstall watch      # repeatedly run a command
+    brew reinstall prettier   # code formatter
+    brew reinstall jq         # parse json
     """
 
 
@@ -185,15 +188,19 @@ def provisional_brew_stuff():
 @sh()
 def brew_casks():
     return """
-    brew cask install atom
+    brew cask install hammerspoon  # automate your mac
+
     brew cask install basictex
+
     brew cask install firefox
     brew cask install google-chrome
-    brew cask install hammerspoon
+
     brew cask install spotify
+
+    brew cask install atom
     brew cask install visual-studio-code
     """
-    # TODO: vscode extensions
+    # TODO: install vscode extensions or sync settings
     # atom one dark theme
     # atom one light theme
     # error lens
@@ -204,7 +211,7 @@ def brew_casks():
 
 
 @collect
-@skip_if_fail("brew cask list | grep hammerspoon")
+@skip_if_fail("brew list --cask | grep hammerspoon")
 @sh()
 def hammerspoon_config():
     return """
@@ -242,20 +249,25 @@ def python_libraries():
 @sh()
 def python_tools():
     return """
+    # use python on the command line easily
     pipx install pypyp
 
+    # some extra git commands
     pipx install git-revise
     pipx install git-delete-merged-branches
 
+    # python formatting
     pipx install black
     pipx install darker
     pipx install isort
 
+    # python linting
     pipx install flake8
     pipx inject flake8 flake8-pyi flake8-bugbear
     pipx install pylint
     pipx install mypy
 
+    # python packaging, testing, profiling
     pipx install poetry
     pipx install pyinstrument
     pipx install pytest

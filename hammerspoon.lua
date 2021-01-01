@@ -14,6 +14,7 @@ hs.fnutils.each({
     { key = "n", app = "Notes" },
     { key = "s", app = "Safari" },
     { key = "t", app = "Terminal" },
+    { key = "v", app = "Visual Studio Code" },
 }, function(item)
     local appact = function()
         hs.application.launchOrFocus(item.app)
@@ -47,6 +48,7 @@ hs.hotkey.bind(mash, "right", adjustwin(0.5, 0, 0.5, 1))
 hs.hotkey.bind(mash, "up", adjustwin(0, 0, 1, 0.5))
 hs.hotkey.bind(mash, "down", adjustwin(0, 0.5, 1, 0.5))
 
+-- Randomly placed largeish window
 hs.hotkey.bind(mash, ".", function()
     local w = 0.5 + math.random() * 0.5
     local h = 0.5 + math.random() * 0.5
@@ -55,6 +57,7 @@ hs.hotkey.bind(mash, ".", function()
     adjustwin(x, y, w, h)()
 end)
 
+-- Randomly placed smallish window
 hs.hotkey.bind(mash, ",", function()
     local x = math.random() * 0.75
     local y = math.random() * 0.75

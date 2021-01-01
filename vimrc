@@ -1,3 +1,6 @@
+" The idea is to keep this somewhat simple so I can continue to use vim as a
+" runs-everywhere in-terminal editor on other (unconfigured) computers
+" without my muscle memory being totally thrown off
 " http://vim.wikia.com/wiki/Example_vimrc
 " http://dougblack.io/words/a-good-vimrc.html
 " https://github.com/tpope/vim-sensible
@@ -9,6 +12,12 @@ syntax enable
 set hidden
 
 set backspace=indent,eol,start
+
+" MAJOR QUALITY OF LIFE IMPROVEMENTS
+" use kj as an alternative to esc (in interactive mode)
+inoremap kj <Esc>
+" use semicolon as an alternative to colon (in normal mode)
+nnoremap ; :
 
 " INDENT
 set autoindent
@@ -33,9 +42,6 @@ set scrolloff=1
 set foldenable
 set foldlevel=200
 set foldmethod=indent
-
-inoremap kj <Esc>
-nnoremap ; :
 
 vnoremap <C-C> "+y
 vnoremap <C-P> "+gP
