@@ -184,21 +184,21 @@ def provisional_brew_stuff():
 
 
 @collect
-@skip_if_fail("brew cask doctor")
+@skip_if_fail("which brew")
 @sh()
 def brew_casks():
     return """
-    brew cask install hammerspoon  # automate your mac
+    brew install --cask hammerspoon  # automate your mac
 
-    brew cask install basictex
+    brew install --cask basictex
 
-    brew cask install firefox
-    brew cask install google-chrome
+    brew install --cask firefox
+    brew install --cask google-chrome
 
-    brew cask install spotify
+    brew install --cask spotify
 
-    brew cask install atom
-    brew cask install visual-studio-code
+    brew install --cask atom
+    brew install --cask visual-studio-code
     """
     # TODO: install vscode extensions or sync settings
     # atom one dark theme
