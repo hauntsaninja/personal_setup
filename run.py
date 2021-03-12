@@ -110,6 +110,7 @@ def zsh():
     git clone https://github.com/tarjoilija/zgen.git ~/.zgen
     zsh -i -c ''
     [[ $SHELL = "$(which zsh)" ]] || chsh -s $(which zsh)
+    touch ~/.z
     """
 
 
