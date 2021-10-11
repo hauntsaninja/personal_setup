@@ -49,8 +49,7 @@ if ! zgen saved; then
     # nice, but can't group notifs, bug in removing failure notifs, bad default titles
     # zgen load marzocchi/zsh-notify
 
-    # my fork fixes an issue when you start a shell in a project with a venv
-    zgen load hauntsaninja/zsh-autoswitch-virtualenv
+    zgen load MichaelAquilina/zsh-autoswitch-virtualenv
 
     # provide suggestions as you type
     zgen load zsh-users/zsh-autosuggestions
@@ -222,7 +221,7 @@ export LESS=-R              # deals with colours better
 setopt correct_all          # adds corrections
 setopt interactivecomments  # recognise comments
 setopt multios              # something to do with redirection?
-CORRECT_IGNORE_FILE='.*|test*.py'  # ignore corrections for files matching these globs
+CORRECT_IGNORE_FILE='.*|*test*'  # ignore corrections for files matching these globs
 
 function google() {
     if [[ $# -gt 0 ]]; then
@@ -239,9 +238,5 @@ export PATH="${HOME}/.local/bin:${HOME}/.pyenv/bin:${PATH}"
 if [ -f "$HOME/.zshrc_local" ]; then
   source "$HOME/.zshrc_local"
 fi
-
-# check_venv comes from zsh-autoswitch-virtualenv
-# Needs to be after all changes to path and prompt and so on
-check_venv
 
 echo "$SECONDS seconds"
