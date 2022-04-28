@@ -56,7 +56,7 @@ def skip_if(cmd, should_fail=False, should_raise=False):
                 raise subprocess.CalledProcessError(returncode, cmd)
             else:
                 blue_print("=" * 25)
-                blue_print("Skipping installing " + pretty_name(fn) + "...")
+                blue_print(f"Skipping installing {pretty_name(fn)}...")
                 blue_print("=" * 25)
                 print()
         return inner
@@ -72,7 +72,7 @@ def sh(check=True):
         @functools.wraps(fn)
         def inner(*args, **kwargs):
             blue_print("=" * 25)
-            blue_print("Installing " + pretty_name(fn) + "...")
+            blue_print(f"Installing {pretty_name(fn)}...")
             blue_print("=" * 25)
             print()
             if not ARGS.yes:
