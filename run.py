@@ -181,7 +181,6 @@ def provisional_brew_stuff():
     brew reinstall watch      # repeatedly run a command
     brew reinstall prettier   # code formatter
     brew reinstall jq         # parse json
-    brew reinstall pwgen      # password generator, used by zsh-autoswitch-virtualenv
     """
 
 
