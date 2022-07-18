@@ -264,8 +264,6 @@ def python_tools():
     # python packaging, testing, profiling
     pipx install poetry
     pipx install pyinstrument
-    pipx install pytest
-    pipx inject pytest pytest-cov pytest-xdist
     pipx install tox
     pipx install virtualenv
     """
