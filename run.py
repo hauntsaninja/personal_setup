@@ -199,7 +199,6 @@ def brew_casks():
 
     brew install --cask spotify
 
-    brew install --cask atom
     brew install --cask visual-studio-code
     """
     # TODO: install vscode extensions or sync settings
@@ -222,13 +221,6 @@ def hammerspoon_config():
     mkdir ~/.hammerspoon
     cp hammerspoon.lua ~/.hammerspoon/init.lua
     """
-
-
-@collect
-@skip_if_fail("which apm")
-@sh()
-def apm():
-    return "apm install sync-settings"
 
 
 @collect
