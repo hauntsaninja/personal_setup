@@ -223,21 +223,6 @@ def hammerspoon_config():
 
 
 @collect
-@raise_if_fail("which python3")
-@sh()
-def python_libraries():
-    return """
-    python3 -m pip install aiohttp
-    python3 -m pip install beautifulsoup4
-    python3 -m pip install pandas
-    python3 -m pip install python-dateutil
-
-    python3 -m pip install ipdb
-    python3 -m pip install ipython
-    """
-
-
-@collect
 @raise_if_fail("which pipx")
 @sh()
 def python_tools():
