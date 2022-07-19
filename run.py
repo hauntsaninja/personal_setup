@@ -200,15 +200,24 @@ def brew_casks():
 
     brew install --cask visual-studio-code
     """
-    # TODO: install vscode extensions or sync settings
-    # atom one dark theme
-    # atom one light theme
-    # error lens
-    # git lens
-    # pylance
-    # rewrap
-    # selected lines count
 
+
+@collect
+@skip_if_fail("which code")
+@sh()
+def vscode_extensions():
+    # TODO: we could install "code" ourselves, also settings.json
+    return """
+    code --install-extension akamud.vscode-theme-onedark
+    code --install-extension akamud.vscode-theme-onelight
+    code --install-extension eamodio.gitlens
+    code --install-extension GitHub.copilot
+    code --install-extension gurumukhi.selected-lines-count
+    code --install-extension ms-python.python
+    code --install-extension ms-python.vscode-pylance
+    code --install-extension stkb.rewrap
+    code --install-extension usernamehw.errorlens
+    """
 
 @collect
 @skip_if_fail("brew list --cask | grep hammerspoon")
