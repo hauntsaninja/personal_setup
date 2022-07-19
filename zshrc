@@ -196,7 +196,7 @@ PROMPT="$([ -z $SSH_CLIENT ] || echo '%F{blue}%n@%m:%f')$([ -z $STY ] || echo '%
 # ==========
 
 # fuzzy ripgrep
-# needs curl -fLo ~/.local/bin/preview.sh https://raw.githubusercontent.com/junegunn/fzf.vim/master/bin/preview.sh
+# needs curl -fLo ~/.local/bin/preview.sh https://raw.githubusercontent.com/junegunn/fzf.vim/2bf85d25e203a536edb2c072c0d41b29e8e4cc1b/bin/preview.sh
 export BAT_THEME=GitHub
 frg() {
     vim $(rg --color ansi --vimgrep $@ | fzf --ansi --preview '~/.local/bin/preview.sh {}' | pyp 'z = x.split(":"); print(f"+{z[1]} {z[0]}")')
