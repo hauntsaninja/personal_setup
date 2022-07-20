@@ -206,7 +206,6 @@ def brew_casks():
 @skip_if_fail("which code")
 @sh()
 def vscode_extensions():
-    # TODO: we could install "code" ourselves, also settings.json
     return """
     code --install-extension akamud.vscode-theme-onedark
     code --install-extension akamud.vscode-theme-onelight
@@ -261,6 +260,22 @@ def python_tools():
     pipx install virtualenv
     """
 
+# TODO:
+# rust, `curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh`
+# code, `ln -sf '/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code' /usr/local/bin/code`
+# install vscode settings.json
+# pre-populate shell history
+# preview.sh
+# terminal font
+# terminal touch id, "auth sufficient pam_tid.so" to first line of "/etc/pam.d/sudo"
+# git config (per-folder)
+# pyenv stuff
+# wemo
+
+# git alias todos
+# fuzzy git stash drop
+# add upstream remote
+# convert remotes to ssh
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
