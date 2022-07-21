@@ -272,11 +272,6 @@ def python_tools():
 # pyenv stuff
 # wemo
 
-# git alias todos
-# fuzzy git stash drop
-# add upstream remote
-# convert remotes to ssh
-
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--yes", action="store_true", help="Don't ask, just do!")
