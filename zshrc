@@ -198,15 +198,15 @@ PROMPT="$([ -z $SSH_CLIENT ] || echo '%F{blue}%n@%m:%f')$([ -z $STY ] || echo '%
 # fuzzy ripgrep
 # needs curl -fLo ~/.local/bin/preview.sh https://raw.githubusercontent.com/junegunn/fzf.vim/2bf85d25e203a536edb2c072c0d41b29e8e4cc1b/bin/preview.sh
 export BAT_THEME=GitHub
-frg() {
+frg() (
     set -o pipefail
     rg --color ansi --vimgrep $@ | fzf --ansi --preview '~/.local/bin/preview.sh {}' | pyp 'z = x.split(":"); print(f"+{z[1]} -c \"normal {z[2]}|\" {shlex.quote(z[0])}")' | xargs -o vim
-}
+)
 
-frgc() {
+frgc() (
     set -o pipefail
     rg --color ansi --vimgrep $@ | fzf --ansi --preview '~/.local/bin/preview.sh {}' | pyp 'shlex.quote(":".join(x.split(":")[:3]))' | xargs -o code --goto
-}
+)
 
 # ripgrep aliases
 alias rg='rg -M 250 -S'     # limit max columns, use smart case
