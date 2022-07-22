@@ -199,6 +199,10 @@ def brew_casks():
     brew install --cask spotify
 
     brew install --cask visual-studio-code
+
+    # brew install --cask --no-quarantine qlmarkdown
+    # brew install --cask --no-quarantine qlstephen
+    # brew install --cask --no-quarantine syntax-highlight
     """
 
 
