@@ -98,6 +98,12 @@ _fzf_compgen_dir() {
 # fuzzy vim
 alias fvim='vim $(fzf)'
 
+# fuzzy ps
+case "$OSTYPE" in
+  darwin*)  alias fps='ps -e -o "pid %cpu %mem args" -m | fzf  --header-lines=1 | pyp "x.strip().split()[0]"' ;;
+  linux*)   alias fps='ps -e -o "pid %cpu %mem comm args" --sort rss | fzf  --header-lines=1 --tac | pyp "x.strip().split()[0]"' ;;
+esac
+
 # ==========
 # Directory
 # ==========
