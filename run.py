@@ -210,12 +210,15 @@ def vscode_extensions():
     return """
     code --install-extension akamud.vscode-theme-onedark
     code --install-extension akamud.vscode-theme-onelight
+    code --install-extension bibhasdn.unique-lines
     code --install-extension eamodio.gitlens
     code --install-extension GitHub.copilot
     code --install-extension gurumukhi.selected-lines-count
     code --install-extension ms-python.python
     code --install-extension ms-python.vscode-pylance
+    code --install-extension rust-lang.rust-analyzer
     code --install-extension stkb.rewrap
+    code --install-extension tomoki1207.pdf
     code --install-extension usernamehw.errorlens
     """
 
