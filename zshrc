@@ -163,7 +163,7 @@ setopt share_history           # share history between shells
 # full screen fuzzy history search bound to ctrl-r
 _fhist () {
     [ -n "$BUFFER" ] && BUFFER="${BUFFER%% ##} "
-    LINE="$(history 0 | fzf -q "$BUFFER" --tac --tiebreak=index | tr -s ' ' | cut -c7-)"
+    LINE="$(history 0 | fzf -q "$BUFFER" --tac --tiebreak=index | pyp 'x.lstrip().split(maxsplit=1)[1]')"
 
     zle redisplay
     zle kill-buffer
