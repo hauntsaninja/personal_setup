@@ -277,9 +277,18 @@ def rust():
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
     """
 
+
+@collect
+@sh()
+def misc():
+    return """
+    # used in an alias
+    mkdir -p ~/.local/bin
+    curl https://raw.githubusercontent.com/junegunn/fzf.vim/master/bin/preview.sh -o ~/.local/bin/preview.sh
+    """
+
 # TODO:
 # pre-populate shell history
-# preview.sh
 # terminal font
 # terminal touch id, "auth sufficient pam_tid.so" to first line of "/etc/pam.d/sudo"
 # git config (per-folder)
