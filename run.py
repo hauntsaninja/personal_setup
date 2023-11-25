@@ -259,8 +259,7 @@ def python_tools():
     pipx install isort
 
     # python linting
-    pipx install flake8
-    pipx inject flake8 flake8-pyi flake8-bugbear
+    pipx install ruff
     pipx install pylint
     pipx install mypy
 
