@@ -228,6 +228,7 @@ def vscode_extensions():
     code --install-extension usernamehw.errorlens
     """
 
+
 @collect
 @skip_if_fail("brew list --cask | grep hammerspoon")
 @sh()
@@ -270,6 +271,7 @@ def python_tools():
     pipx install virtualenv
     """
 
+
 @collect
 @sh()
 def rust():
@@ -286,6 +288,7 @@ def misc():
     mkdir -p ~/.local/bin
     curl https://raw.githubusercontent.com/junegunn/fzf.vim/master/bin/preview.sh -o ~/.local/bin/preview.sh
     """
+
 
 # TODO:
 # pre-populate shell history
