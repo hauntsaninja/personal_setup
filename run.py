@@ -270,8 +270,14 @@ def python_tools():
     pipx install virtualenv
     """
 
+@collect
+@sh()
+def rust():
+    return """
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+    """
+
 # TODO:
-# rust, `curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh`
 # pre-populate shell history
 # preview.sh
 # terminal font
