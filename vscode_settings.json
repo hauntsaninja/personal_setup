@@ -1,0 +1,30 @@
+{
+    "workbench.colorTheme": "Atom One Light",
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "gitlens.statusBar.enabled": false,
+    "github.copilot.enable": {
+        "*": true,
+        "yaml": true,
+        "plaintext": true,
+        "markdown": true
+    },
+    "python.analysis.typeCheckingMode": "basic",
+    "rust-analyzer.inlayHints.typeHints.enable": false,
+    "rust-analyzer.inlayHints.parameterHints.enable": false,
+    "rust-analyzer.inlayHints.chainingHints.enable": false,
+    "workbench.editor.limit.enabled": true,
+    "workbench.editor.limit.excludeDirty": true,
+    "workbench.editor.limit.value": 16,
+    "workbench.editor.openPositioning": "left",
+    "workbench.editor.restoreViewState": false,
+    "markdown.preview.fontSize": 13,
+    "editor.inlineSuggest.enabled": true,
+    "editor.rulers": [
+        100
+    ],
+    "editor.multiCursorModifier": "ctrlCmd",
+    "window.zoomLevel": 1
+}
+

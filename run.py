@@ -212,6 +212,8 @@ def brew_casks():
 @sh()
 def vscode_extensions():
     return """
+    cp vscode_settings.json ~/"Library/Application Support/Code/User/settings.json"
+
     code --install-extension akamud.vscode-theme-onedark
     code --install-extension akamud.vscode-theme-onelight
     code --install-extension bibhasdn.unique-lines
@@ -270,8 +272,6 @@ def python_tools():
 
 # TODO:
 # rust, `curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh`
-# code, `ln -sf '/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code' /usr/local/bin/code`
-# install vscode settings.json
 # pre-populate shell history
 # preview.sh
 # terminal font
