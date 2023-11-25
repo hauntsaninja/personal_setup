@@ -140,6 +140,22 @@ function d () {
   fi
 }
 
+function r() {
+    local dir="$PWD"
+    while [[ "$dir" != "" && ! -e "$dir/.git" ]]; do
+        dir="${dir%/*}"
+    done
+    cd "${dir:-$HOME}"
+}
+
+function rc() {
+    local dir="$PWD"
+    while [[ "$dir" != "" && ! -e "$dir/.git" ]]; do
+        dir="${dir%/*}"
+    done
+    code "${dir:-$HOME}"
+}
+
 # fuzzy z
 fz() {
     cd $(z | pyp 'x.split()[1]' | fzf --tac $([[ -z "$1" ]] && echo "" || echo "--query $@") || pwd)
