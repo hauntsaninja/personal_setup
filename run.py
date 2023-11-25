@@ -289,12 +289,20 @@ def misc():
     """
 
 
+@collect
+@sh()
+def pyenv_python():
+    return """
+    brew install openssl readline sqlite3 xz zlib ncurses
+    PYTHON_CONFIGURE_OPTS='--enable-optimizations --with-lto --disable-shared' PROFILE_TASK='-m test.regrtest --pgo -j0' PYTHON_CFLAGS='-march=native -mtune=native' pyenv install --skip-existing 3.11.6
+    pyenv global 3.11.6
+    """
+
 # TODO:
 # pre-populate shell history
 # terminal font
 # terminal touch id, "auth sufficient pam_tid.so" to first line of "/etc/pam.d/sudo"
 # git config (per-folder)
-# pyenv stuff
 # wemo
 
 if __name__ == "__main__":
