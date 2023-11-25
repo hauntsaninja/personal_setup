@@ -105,12 +105,16 @@ def zsh():
     return """
     [[ ! -f ~/.zshrc ]] || diff zshrc ~/.zshrc
     cp zshrc ~/.zshrc
-    # zsh -c 'compaudit | xargs chmod g-w'
+
+    printf 'export PATH="/opt/homebrew/bin:/opt/homebrew/sbin${PATH+:$PATH}"\n' > ~/.zshenv
+
     rm -rf ~/.zgen
     git clone https://github.com/tarjoilija/zgen.git ~/.zgen
-    zsh -i -c ''
-    [[ $SHELL = "$(which zsh)" ]] || chsh -s $(which zsh)
     touch ~/.z
+
+    zsh -i -c ''
+
+    [[ $SHELL = "$(which zsh)" ]] || chsh -s $(which zsh)
     """
 
 
