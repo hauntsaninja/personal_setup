@@ -251,6 +251,8 @@ setopt interactivecomments  # recognise comments
 setopt multios              # something to do with redirection?
 CORRECT_IGNORE_FILE='.*|*test*'  # ignore corrections for files matching these globs
 
+export PYP_CONFIG_PATH="${HOME}/.pypconf.py"
+
 function google() {
     if [[ $# -gt 0 ]]; then
         url="https://www.google.com/search?q=${(j:+:)@}"

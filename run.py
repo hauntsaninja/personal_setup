@@ -286,6 +286,8 @@ def misc():
     # used in an alias
     mkdir -p ~/.local/bin
     curl https://raw.githubusercontent.com/junegunn/fzf.vim/master/bin/preview.sh -o ~/.local/bin/preview.sh
+
+    cp pypconf.py ~/.pypconf.py
     """
 
 
