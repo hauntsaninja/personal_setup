@@ -106,7 +106,7 @@ def zsh():
     [[ ! -f ~/.zshrc ]] || diff zshrc ~/.zshrc
     cp zshrc ~/.zshrc
 
-    printf 'export PATH="/opt/homebrew/bin:/opt/homebrew/sbin${PATH+:$PATH}"\n' > ~/.zshenv
+    printf 'export PATH="/opt/homebrew/bin:/opt/homebrew/sbin${PATH+:$PATH}"\\n' > ~/.zshenv
 
     rm -rf ~/.zgen
     git clone https://github.com/tarjoilija/zgen.git ~/.zgen
