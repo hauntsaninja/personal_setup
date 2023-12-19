@@ -209,7 +209,7 @@ function _git_current_branch() {
 }
 
 RPROMPT="%B%(?::%F{red}%? %f)%b"  # exit code to the right
-PROMPT="$([ -z $SSH_CLIENT ] || echo '%F{blue}%n@%m:%f')$([ -z $STY ] || echo '%F{blue}screen:%f')%F{cyan}%-50<..<%~%f%F{8} \$(_git_current_branch)%fλ "
+PROMPT="$([ -n "$SSH_CLIENT" ] || [ -n "$KUBERNETES_SERVICE_HOST" ] && echo '%F{blue}%n@%m:%f')$([ -n "$STY" ] && echo '%F{blue}screen:%f')%F{cyan}%-50<..<%~%f%F{8} \$(_git_current_branch)%fλ "
 
 # maybe look into romkatv/powerlevel10k (or possibly sindresorhus/pure)
 
