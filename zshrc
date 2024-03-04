@@ -230,6 +230,13 @@ frgc() (
     rg --color ansi --vimgrep $@ | fzf --ansi --preview '~/.local/bin/preview.sh {}' | pyp 'shlex.quote(":".join(x.split(":")[:3]))' | xargs -o code --goto
 )
 
+rgi() (
+  key="$1"
+  shift
+  literal_key=$(python -c "import re, itertools; print(''.join(chr(c) for _, c in max((list(g) for k, g in itertools.groupby(re._parser.parse('$key'), key=lambda x: x[0]) if k == re._constants.LITERAL), key=len)))")
+  mdfind -literal "kMDItemTextContent == \"*$literal_key*\"" -onlyin . | xargs rg "$key" "$@"
+)
+
 # ripgrep aliases
 alias rg='rg -M 250 -S'     # limit max columns, use smart case
 alias rgh='rg --hidden'     # search hidden files
