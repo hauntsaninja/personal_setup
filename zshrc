@@ -167,8 +167,8 @@ fz() {
 # ==========
 
 HISTFILE="$HOME/.zsh_history"
-HISTSIZE=50000
-SAVEHIST=25000
+HISTSIZE=80000
+SAVEHIST=40000
 
 setopt extended_history        # record timestamp of command in HISTFILE
 setopt hist_expire_dups_first  # delete duplicates first when HISTFILE size exceeds HISTSIZE
