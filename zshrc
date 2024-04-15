@@ -5,9 +5,8 @@ typeset -F 3 SECONDS=0
 autoload -U compinit
 compinit -i -C
 
-# load zgen
-source "${HOME}/.zgen/zgen.zsh"
-
+# load zgenom
+source "${HOME}/.zgenom/zgenom.zsh"
 
 function file_mtime() {
   local cmd
@@ -18,49 +17,51 @@ function file_mtime() {
 }
 
 # automatically update things every now and then
-if zgen saved && [[ $(( $(date +%s) - $(file_mtime ~/.zgen/init.zsh) )) -gt 1000000 ]]; then
-    touch ~/.zgen/init.zsh
+if zgenom saved && [[ $(( $(date +%s) - $(file_mtime ~/.zgenom/sources/init.zsh) )) -gt 1000000 ]]; then
+    touch ~/.zgenom/sources/init.zsh
     { brew update; brew upgrade; brew cleanup; } &
     pipx upgrade-all &
-    zgen selfupdate; zgen update;
+    zgenom selfupdate; zgenom update;
 fi
 
 # if the init scipt doesn't exist
-if ! zgen saved; then
+if ! zgenom saved; then
 
     # the gist has a couple things scavenged from ohmyzsh
-    zgen load https://gist.github.com/528dc0693e8dfacdfdc0cef6bd7f844b.git
+    zgenom load https://gist.github.com/528dc0693e8dfacdfdc0cef6bd7f844b.git
     # git aliases
-    zgen load hauntsaninja/my_git_aliases
+    zgenom load hauntsaninja/my_git_aliases
 
     # fzf for everything
-    zgen load junegunn/fzf shell
-    zgen load Aloxaf/fzf-tab
+    zgenom load junegunn/fzf shell f97d2754134607b24849fc4a2062dbfcaafddd6a
+    zgenom load Aloxaf/fzf-tab . bf3ef5588af6d3bf7cc60f2ad2c1c95bca216241
 
-    zgen load docker/cli contrib/completion/zsh
+    zgenom load docker/cli contrib/completion/zsh 78012b0ee587e49f4313051e414fe1acecf2ab12
 
     # use z to cd to recently used directories
-    zgen load rupa/z
+    zgenom load rupa/z . d37a763a6a30e1b32766fecc3b8ffd6127f8a0fd
     # suggest use of defined aliases
-    zgen load djui/alias-tips
+    zgenom load djui/alias-tips . 41cb143ccc3b8cc444bf20257276cb43275f65c4
     # cd upwards in the directory tree
-    zgen load shannonmoeller/up
+    zgenom load shannonmoeller/up . a1fe10fababd58567880380938fdae6d6b9d5bdf
 
     # nice, but can't group notifs, bug in removing failure notifs, bad default titles
-    # zgen load marzocchi/zsh-notify
+    # zgenom load marzocchi/zsh-notify
 
-    zgen load MichaelAquilina/zsh-autoswitch-virtualenv
+    zgenom load MichaelAquilina/zsh-autoswitch-virtualenv . f8dffe5bce18ea4b6817e39f252f628a43b03712
 
     # provide suggestions as you type
-    zgen load zsh-users/zsh-autosuggestions
+    zgenom load zsh-users/zsh-autosuggestions . c3d4e576c9c86eac62884bd47c01f6faed043fc5
 
-    # order matters for the next two
-    zgen load zsh-users/zsh-syntax-highlighting  # should be last
+    # order matters for the next two...
+    # ...syntax highlighting should be last
+    zgenom load zsh-users/zsh-syntax-highlighting . e0165eaa730dd0fa321a6a6de74f092fe87630b0
     # press up and down to fuzzy search history for your partial command
-    zgen load zsh-users/zsh-history-substring-search  # except for this
+    # ...except for history substring search
+    zgenom load zsh-users/zsh-history-substring-search . 8dd05bfcc12b0cd1ee9ea64be725b3d9f713cf64
 
     # generate the init script from plugins above
-    zgen save
+    zgenom save
 fi
 
 # ==========

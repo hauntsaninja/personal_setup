@@ -109,7 +109,8 @@ def zsh():
     printf 'export PATH="/opt/homebrew/bin:/opt/homebrew/sbin${PATH+:$PATH}"\\n' > ~/.zshenv
 
     rm -rf ~/.zgen
-    git clone https://github.com/tarjoilija/zgen.git ~/.zgen
+    rm -rf ~/.zgenom
+    git clone -b pinned https://github.com/hauntsaninja/zgenom.git ~/.zgenom
     touch ~/.z
 
     zsh -i -c ''
