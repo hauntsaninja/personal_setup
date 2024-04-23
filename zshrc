@@ -17,7 +17,10 @@ function file_mtime() {
 }
 
 # automatically update things every now and then
-if zgenom saved && [[ $(( $(date +%s) - $(file_mtime ~/.zgenom/sources/init.zsh) )) -gt 1000000 ]]; then
+if zgenom saved &&
+    [[ $(( $(date +%s) - $(file_mtime ~/.zgenom/sources/init.zsh) )) -gt 1000000 ]] &&
+    [ -z "$KUBERNETES_SERVICE_HOST" ];
+then
     touch ~/.zgenom/sources/init.zsh
     { brew update; brew upgrade; brew cleanup; } &
     pipx upgrade-all &
