@@ -162,7 +162,6 @@ def main_brew_stuff():
     brew reinstall ripgrep  # code search
     brew reinstall fzf      # fuzzy finder
     brew reinstall pipx     # manage python apps in their own venvs
-    brew reinstall pyenv    # manage python versions
     brew reinstall htop     # view processes
     brew reinstall tree     # show a directory tree
     """
@@ -291,15 +290,6 @@ def misc():
     cp pypconf.py ~/.pypconf.py
     """
 
-
-@collect
-@sh()
-def pyenv_python():
-    return """
-    brew install openssl readline sqlite3 xz zlib ncurses
-    PYTHON_CONFIGURE_OPTS='--enable-optimizations --with-lto --disable-shared' PROFILE_TASK='-m test.regrtest --pgo -j0' PYTHON_CFLAGS='-march=native -mtune=native' pyenv install --skip-existing 3.11.6
-    pyenv global 3.11.6
-    """
 
 # TODO:
 # pre-populate shell history
