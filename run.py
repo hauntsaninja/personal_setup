@@ -112,6 +112,7 @@ def zsh():
     rm -rf ~/.zgenom
     git clone -b pinned https://github.com/hauntsaninja/zgenom.git ~/.zgenom
     touch ~/.z
+    touch ~/.pypconf.py
 
     zsh -i -c ''
 
