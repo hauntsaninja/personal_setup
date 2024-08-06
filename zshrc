@@ -253,6 +253,7 @@ alias rgj='rg -t js -t ts'
 # Misc
 # ==========
 
+export REPORTTIME=1         # print time taken if longer than 1s
 export EDITOR=vim
 export PAGER=less
 export LESS=-R              # deals with colours better
