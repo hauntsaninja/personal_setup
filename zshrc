@@ -24,6 +24,7 @@ then
     touch ~/.zgenom/sources/init.zsh
     { brew update; brew upgrade; brew cleanup; } &
     pipx upgrade-all &
+    uv tool upgrade --all &
     zgenom selfupdate; zgenom update;
 fi
 

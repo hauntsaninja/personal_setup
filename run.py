@@ -243,32 +243,36 @@ def hammerspoon_config():
 
 
 @collect
-@raise_if_fail("which pipx")
+@raise_if_fail("which uv || which pipx")
 @sh()
 def python_tools():
     return """
+    which uv || pipx install uv
+
     # use python on the command line easily
-    pipx install pypyp
+    uv tool install pypyp
 
     # some extra git commands
-    pipx install git-revise
-    pipx install git-delete-merged-branches
+    uv tool install git-revise
+    uv tool install git-delete-merged-branches
 
     # python formatting
-    pipx install black
-    pipx install darker
-    pipx install isort
+    uv tool install black
+    uv tool install darker
+    uv tool install isort
 
     # python linting
-    pipx install ruff
-    pipx install pylint
-    pipx install mypy
+    uv tool install ruff
+    uv tool install pylint
+    uv tool install pyright
 
     # python packaging, testing, profiling
-    pipx install poetry
-    pipx install pyinstrument
-    pipx install tox
-    pipx install virtualenv
+    uv tool install poetry
+    uv tool install pyinstrument
+    uv tool install tox
+    uv tool install virtualenv
+    uv tool install ipython
+    uv tool install pre-commit
     """
 
 
