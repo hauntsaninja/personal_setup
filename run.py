@@ -158,7 +158,6 @@ def brew():
 @sh()
 def main_brew_stuff():
     return """
-    brew reinstall python3
     brew reinstall node
     brew reinstall ripgrep  # code search
     brew reinstall fzf      # fuzzy finder
@@ -239,6 +238,18 @@ def hammerspoon_config():
     rm -rf ~/.hammerspoon
     mkdir ~/.hammerspoon
     cp hammerspoon.lua ~/.hammerspoon/init.lua
+    """
+
+
+@collect
+@skip_if("python -c 'import sys; assert sys.version_info >= (3, 11)' && python3 -c 'import sys; assert sys.version_info >= (3, 11)'")
+@sh()
+def python():
+    return """
+    source python_setup.sh && python_setup 3.12.5
+    mkdir -p ~/.local/bin
+    ln -sf ~/.pyenv/versions/3.12.5/bin/python ~/.local/bin/python
+    ln -sf ~/.pyenv/versions/3.12.5/bin/python3 ~/.local/bin/python3
     """
 
 
