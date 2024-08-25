@@ -307,10 +307,18 @@ def misc():
     """
 
 
+@collect
+@skip_if_fail("sw_vers")
+@sh()
+def terminal_touch_id():
+    return """
+    sed "s/^#auth/auth/" /etc/pam.d/sudo_local.template | sudo tee /etc/pam.d/sudo_local
+    """
+
+
 # TODO:
 # pre-populate shell history
 # terminal font
-# terminal touch id, "auth sufficient pam_tid.so" to first line of "/etc/pam.d/sudo"
 # git config (per-folder)
 # wemo
 
