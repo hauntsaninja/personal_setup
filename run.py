@@ -141,8 +141,7 @@ def ubuntu_stuff():
     git clone --depth 1 https://github.com/junegunn/fzf.git /tmp/fzf
     /tmp/fzf/install --bin
     mv /tmp/fzf/bin/fzf ${HOME}/.local/bin
-
-    python3 -m pip install pypyp virtualenv
+    rm -rf /tmp/fzf
     """
 
 
@@ -284,6 +283,7 @@ def python_tools():
     uv tool install virtualenv
     uv tool install ipython
     uv tool install pre-commit
+    uv tool install py-spy
     """
 
 
