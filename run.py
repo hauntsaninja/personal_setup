@@ -248,10 +248,10 @@ def hammerspoon_config():
 @sh()
 def python():
     return """
-    source python_setup.sh && python_setup 3.12.5
+    source python_setup.sh && python_setup 3.12.7
     mkdir -p ~/.local/bin
-    ln -sf ~/.pyenv/versions/3.12.5/bin/python ~/.local/bin/python
-    ln -sf ~/.pyenv/versions/3.12.5/bin/python3 ~/.local/bin/python3
+    ln -sf ~/.pyenv/versions/3.12.7/bin/python ~/.local/bin/python
+    ln -sf ~/.pyenv/versions/3.12.7/bin/python3 ~/.local/bin/python3
     """
 
 
