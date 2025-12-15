@@ -90,7 +90,7 @@ ZSH_HIGHLIGHT_STYLES[precommand]='none'
 ZSH_HIGHLIGHT_STYLES[redirection]='bold'
 
 # fzf config
-export FZF_DEFAULT_COMMAND="find . -type f -not -path '*/\.git/*'"
+export FZF_DEFAULT_COMMAND='git rev-parse --is-inside-work-tree >/dev/null 2>&1 && git ls-files || find . -type f'
 
 _fzf_compgen_path() {
   find $1 -type f -not -path '*/\.git/*'
