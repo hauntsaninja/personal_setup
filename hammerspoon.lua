@@ -2,12 +2,9 @@ math.randomseed(os.time())
 
 local mash = {"cmd", "alt", "ctrl"}
 hs.fnutils.each({
-    { key = "a", app = "Atom" },
     { key = "b", app = "Bear" },
-    { key = "c", app = "Calendar" },
     { key = "f", app = "Firefox" },
     { key = "g", app = "Google Chrome" },
-    { key = "i", app = "iTunes" },
     { key = "l", app = "Slack" },
     { key = "m", app = "Messages" },
     { key = "p", app = "Spotify" },

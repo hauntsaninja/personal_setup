@@ -160,7 +160,6 @@ def main_brew_stuff():
     brew reinstall node
     brew reinstall ripgrep  # code search
     brew reinstall fzf      # fuzzy finder
-    brew reinstall pipx     # manage python apps in their own venvs
     brew reinstall htop     # view processes
     brew reinstall tree     # show a directory tree
     """
@@ -176,6 +175,7 @@ def provisional_brew_stuff():
     brew reinstall tokei      # count lines in code
     brew reinstall hyperfine  # benchmarking
     brew reinstall dust       # like du + tree
+    brew reinstall codex      # codex cli
     brew reinstall gh         # github cli
     brew reinstall fastmod    # fast codemod (i hate sed)
     brew reinstall watch      # repeatedly run a command
@@ -276,15 +276,11 @@ def python_tools():
 
     # python linting
     uv tool install ruff
-    uv tool install pylint
     uv tool install pyright
 
     # python packaging, testing, profiling
-    uv tool install poetry
     uv tool install pyinstrument
     uv tool install tox
-    uv tool install virtualenv
-    uv tool install ipython
     uv tool install pre-commit
     uv tool install py-spy
     """
