@@ -158,6 +158,7 @@ def brew():
 def main_brew_stuff():
     return """
     brew reinstall node
+    brew reinstall uv
     brew reinstall ripgrep  # code search
     brew reinstall fzf      # fuzzy finder
     brew reinstall htop     # view processes
@@ -244,26 +245,29 @@ def hammerspoon_config():
 
 
 @collect
-@skip_if("python -c 'import sys; assert sys.version_info >= (3, 11)' && python3 -c 'import sys; assert sys.version_info >= (3, 11)'")
+@skip_if("python -c 'import sys; assert sys.version_info >= (3, 13)' && python3 -c 'import sys; assert sys.version_info >= (3, 13)'")
 @sh()
 def python():
     return """
-    source python_setup.sh && python_setup 3.12.7
-    mkdir -p ~/.local/bin
-    ln -sf ~/.pyenv/versions/3.12.7/bin/python ~/.local/bin/python
-    ln -sf ~/.pyenv/versions/3.12.7/bin/python3 ~/.local/bin/python3
+    uv python install --default
+    # source python_setup.sh && python_setup 3.12.7
+    # mkdir -p ~/.local/bin
+    # ln -sf ~/.pyenv/versions/3.12.7/bin/python ~/.local/bin/python
+    # ln -sf ~/.pyenv/versions/3.12.7/bin/python3 ~/.local/bin/python3
     """
 
 
 @collect
-@raise_if_fail("which uv || which pipx")
+@raise_if_fail("which uv")
 @sh()
 def python_tools():
     return """
-    which uv || pipx install uv
+    mkdir -p ~/.config/uv
+    echo 'exclude-newer = "3 days"' > ~/.config/uv/uv.toml
 
     # use python on the command line easily
     uv tool install pypyp
+    cp pypconf.py ~/.pypconf.py
 
     # some extra git commands
     uv tool install git-revise
@@ -283,6 +287,7 @@ def python_tools():
     uv tool install tox
     uv tool install pre-commit
     uv tool install py-spy
+    uv tool install virtualenv
     """
 
 

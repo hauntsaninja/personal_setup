@@ -29,14 +29,14 @@ python_setup() (
     # To use, do something like:
     # ```
     # source python_setup.sh
-    # python_setup 3.11.7 arm64
+    # python_setup 3.13.14 arm64
     # ```
     # Note that this uses pyenv as a convenient way to build and house the Pythons, but doesn't
     # actually really use or install pyenv. You can just use the binaries in e.g.
-    # ~/.pyenv/versions/3.12.2/bin/python like normal without thinking about pyenv at all.
+    # ~/.pyenv/versions/3.13.14/bin/python like normal without thinking about pyenv at all.
     set -eux
 
-    PYTHON_VERSION="${1:-3.11.7}"
+    PYTHON_VERSION="${1:-3.13.14}"
     ARCH_EXPECTED="${2:-$(canonicalize_arch $(arch))}"
 
     # TODO: look into something like https://github.com/AdrianDAlessandro/pyenv-suffix
@@ -132,7 +132,7 @@ Create a shell with arch -${ARCH_EXPECTED} zsh and try again \
     export PROFILE_TASK='-m test.regrtest --pgo -j0'
     export PYTHON_CFLAGS='-march=native -mtune=native'
 
-    # installs python 3.11.x to $(pyenv root)/versions/3.11.x/bin/python
+    # installs python 3.13.x to $(pyenv root)/versions/3.13.x/bin/python
     $PYENV install --skip-existing $PYTHON_VERSION
     # tells pyenv's shims to default to the python we just installed
     $PYENV global | head -n 1 | grep -q $PYTHON_VERSION || $PYENV global $PYTHON_VERSION
